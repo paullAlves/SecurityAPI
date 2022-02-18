@@ -7,7 +7,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using SecurityAPI;
 
 namespace SecurityAPI
 {
@@ -30,7 +29,7 @@ namespace SecurityAPI
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SecurityAPI", Version = "v1" });
             });
 
-            var key = Encoding.ASCII.GetBytes(Settings.Secret);
+            var key = Encoding.ASCII.GetBytes(Configuration.GetSection("PrivateKey").Value);
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -64,15 +63,14 @@ namespace SecurityAPI
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                
             });
-
-            app.UseAuthentication();
-            app.UseAuthorization();
         }
     }
 }

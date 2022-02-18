@@ -1,7 +1,7 @@
 using System;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using SecurityAPI.Repository;
 using SecurityAPI.TokenServices;
@@ -13,16 +13,19 @@ namespace SecurityAPI.Controllers
     public class AuthenticationController : ControllerBase
     {
         private readonly ILogger<AuthenticationController> _logger;
+        private readonly IConfiguration _configuration;
 
-        public AuthenticationController(ILogger<AuthenticationController> logger)
+
+        public AuthenticationController(ILogger<AuthenticationController> logger, IConfiguration configuration)
         {
             _logger = logger;
+            _configuration = configuration;
         }
 
         [HttpPost]
         [Route("login")]
         [AllowAnonymous]
-        public async Task<ActionResult<dynamic>> Authenticate([FromBody] User model)
+        public ActionResult<dynamic> Authenticate([FromBody] User model)
         {
             // Recupera o usuário
             var user = UserRepository.Get(model.UserName, model.Password);
@@ -32,7 +35,7 @@ namespace SecurityAPI.Controllers
                 return NotFound(new { message = "Usuário ou senha inválidos" });
 
             // Gera o Token
-            var token = TokenService.GenerateToken(user);
+            var token = TokenService.GenerateToken(user, _configuration.GetSection("PrivateKey").Value);
 
             // Oculta a senha
             user.Password = "";
