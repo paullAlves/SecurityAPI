@@ -5,6 +5,14 @@ VisualStudioVersion = 16.0.810.19
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecurityAPI", "SecurityAPI.csproj", "{1A6C5BB8-4DF0-4F54-BC41-5E36C49766BC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repositories", "Repositories", "{5AF4B37A-75CF-4663-975D-9D33592CB184}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{EBF33531-EEE9-40EE-8B19-D832FEF826DD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8C927CAC-F120-4CF1-AED1-2B57E766EB17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScurityAPI_Tests", "..\ScurityAPI_Tests\ScurityAPI_Tests.csproj", "{70435398-C9CA-4F59-9CD7-9E6DF1548D57}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,11 +23,18 @@ Global
 		{1A6C5BB8-4DF0-4F54-BC41-5E36C49766BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A6C5BB8-4DF0-4F54-BC41-5E36C49766BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A6C5BB8-4DF0-4F54-BC41-5E36C49766BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70435398-C9CA-4F59-9CD7-9E6DF1548D57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70435398-C9CA-4F59-9CD7-9E6DF1548D57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70435398-C9CA-4F59-9CD7-9E6DF1548D57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70435398-C9CA-4F59-9CD7-9E6DF1548D57}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A1B18BAB-178E-41F0-A746-D1E77400F26E}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{70435398-C9CA-4F59-9CD7-9E6DF1548D57} = {8C927CAC-F120-4CF1-AED1-2B57E766EB17}
 	EndGlobalSection
 EndGlobal
